@@ -1,0 +1,61 @@
+select * from DISCOS
+select * from ESTILOS
+SELECT * FROM TIPOSEDICION
+
+--PRACTICA - Ejercicios Consulta SQL
+
+--1. Traer (o mostrar es SELECT) todos los discos con su respectivo estilo. La consulta debe mostrar: Nombre de disco, Fecha de lanzamiento, Estilo (no el id, sino la descripción).
+
+select D.Titulo, D.FechaLanzamiento, E.Descripcion from DISCOS D, ESTILOS E
+where D.IdEstilo = E.Id
+
+--2. Insertar (INSERT INTO) al menos dos estilos nuevos y un tipo de edición de disco.
+
+--    se puede poner directamente rellenando todos los campos de manera correlativa, sin contar con el campo patron (en este caso el ID):
+
+insert into ESTILOS values
+('Clásico')
+insert into TIPOSEDICION values
+('DVD')
+--    se puede poner por campo a campo, seleccionamos el campo al que queremos añadir y luego le añadimos los valores:
+
+insert into ESTILOS (Descripcion) 
+values ('Opera')
+
+
+--3. Insertar al menos dos discos nuevos cargando correctamente su información.
+
+insert into DISCOS values
+('Corazón salvaje',getdate(),10,'https://www.aaaaaaaaaa.aaa',4,4 )
+insert into DISCOS values
+('Vivir por vivir',5/8/18,11,'https://www.bbbbbbbbbbbb.bbb',3,5)
+insert into DISCOS values
+('Vaya panda',13/10/2020,9,'https://www.ccccccccccc.ccc',4,2)
+
+
+--4. Actualizar (UPDATE) al menos un disco modificando la cantidad de canciones y la fecha de lanzamiento. No te olvides del Where.
+
+update DISCOS set CantidadCanciones = 13 where id = 2
+update DISCOS set FechaLanzamiento = '20200828 12:30:00' where CantidadCanciones = 9
+
+
+
+--5. Borrar (DELETE FROM) un disco a elección.
+
+delete from DISCOS where IdTipoEdicion = 5 -- es el disco de titulo "Vivir por vivir"
+
+
+--6. Traer todos los estilos que estén asociados a algún disco.
+
+select E.Descripcion, D.Titulo from ESTILOS E, DISCOS D
+where E.Id = D.IdEstilo
+
+--7. Traer todos los discos con el siguiente formato: Nombre, Estilo, Edición (todo texto).
+
+select D.Titulo, E.Descripcion, T.Descripcion from DISCOS D, ESTILOS E, TIPOSEDICION T
+where D.IdEstilo = E.Id AND D.IdTipoEdicion = T.Id
+
+--8. Traer todos los discos que contengan en su nombre la sílaba "ho".
+
+select * from DISCOS
+where Titulo = 'ho'

@@ -1,0 +1,11 @@
+Clases, Obejtos y Propiedades. Encapsulamiento.
+
+Ejemplo de clases:
+- Persona: Edad, Sueldo, Nombre,.....
+- Botella: Capacidad, Color, Material,....
+- Perro: Nombre, Color, Origen,....
+
+
+Ejemplo de clases llevado a la realidad con el ejemplo:
+- Artículo: Código, Precio
+- Venta: Código Artículo, Cantidad, Código Cliente
